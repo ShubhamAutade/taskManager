@@ -1,28 +1,28 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import prisma  from './prisma.js'
-
-dotenv.config();
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
 
-const app =  express()
+dotenv.config()
 
-const PORT = process.env.PORT || 8082 
+const app = express()
+const PORT = process.env.PORT || 8082
 
+app.use(cors())
 app.use(express.json())
 
 
-app.get("/test", (req, res) => {
-    
-    res.status(200).json(
-        {
-            success : true ,
-            message : `Heart is Pumping`
-        }
-    )
+app.get('/test', (req, res) => {
+    res.status(200).json({
+        success : true,
+        message :"running"
+    })
 })
 
-app.listen(PORT, () => {
-    console.log(`app ruining on PORT ${PORT}`);
+
+
+
+app.listen(PORT, ()=> {
+    console.log(`app listing on PORT ${PORT}`);
     
 })
